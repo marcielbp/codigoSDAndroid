@@ -22,17 +22,20 @@ public class CalculadoraHttpPOST extends AsyncTask<Void, Void, String> {
 
     TextView tv;
     String oper1,oper2;
+    Integer operacao;
     PrecisaCalcular pc;
-    public CalculadoraHttpPOST(TextView tv, String oper1, String oper2){
+    public CalculadoraHttpPOST(TextView tv, String oper1, String oper2, Integer operacao){
         this.tv=tv;
         this.oper1=oper1;
         this.oper2=oper2;
+        this.operacao = operacao;
 
     }
-    public CalculadoraHttpPOST(PrecisaCalcular pc, String oper1, String oper2){
+    public CalculadoraHttpPOST(PrecisaCalcular pc, String oper1, String oper2, Integer operacao){
         this.tv=tv;
         this.oper1=oper1;
         this.oper2=oper2;
+        this.operacao = operacao;
         this.pc=pc;
 
     }
@@ -53,7 +56,7 @@ public class CalculadoraHttpPOST extends AsyncTask<Void, Void, String> {
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
-            writer.write("oper1="+oper1+"&oper2="+oper2+"&operacao=1");
+            writer.write("oper1="+oper1+"&oper2="+oper2+"&operacao="+operacao);
             writer.flush();
             writer.close();
             os.close();
